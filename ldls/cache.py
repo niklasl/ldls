@@ -140,6 +140,9 @@ class GraphCache:
 
             if isinstance(self, ReadSymbol) and ':' in value:
                 pfx, local = value.split(':', 1)
+                if pfx == '_':
+                    return value
+
                 ns = self.context.get(pfx or VOCAB)
 
                 if ns is None:
